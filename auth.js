@@ -89,3 +89,13 @@ if (resetForm) {
 }
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const welcomeMsg = document.getElementById("welcome-msg");
+
+    if (userData && userData.name && welcomeMsg) {
+        welcomeMsg.textContent = `Welcome, ${userData.name}`;
+    }
+});
+
