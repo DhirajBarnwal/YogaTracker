@@ -26,10 +26,11 @@
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <i class="fas fa-spa text-2xl text-green-500"></i>
-                <h1 class="text-xl font-bold">YogaTrack</h1>
+                <h1 class="text-xl text-gray-800 font-bold">Yoga<span class="text-blue-500">Track</span></h1>
             </div>
             <div class="flex items-center space-x-4">
-                <span class="text-gray-600">Welcome, <?= htmlspecialchars($user['name']) ?></span>
+                <span id="welcome-msg" class="text-gray-900 font-bold text-xl">Welcome</span>
+
                 <a href="index.html" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                     <i class="fas fa-sign-out-alt mr-1"></i> Logout
                 </a>
@@ -368,5 +369,19 @@
             });
         });
     </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const userData = JSON.parse(localStorage.getItem("user"));
+        const welcomeMsg = document.getElementById("welcome-msg");
+    
+        if (userData && userData.name && welcomeMsg) {
+            welcomeMsg.textContent = `Welcome, ${userData.name}`;
+        }
+    });
+    </script>
+    
+
+
 </body>
 </html>
